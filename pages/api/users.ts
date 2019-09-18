@@ -1,9 +1,14 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import express from "express";
 
+import { common, requireAuth } from "../../src/server/middleware";
 import { UserModel } from "../../src/server/models";
 
-const users = async (_req: NextApiRequest, res: NextApiResponse) => {
-  res.send(await UserModel.find());
-};
+const app = express();
 
-export default users;
+app.use(common);
+
+app.use(requireAuth, async (_req, res) => {
+  res.send(await UserModel.find());
+});
+
+export default app;

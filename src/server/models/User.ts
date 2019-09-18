@@ -3,7 +3,11 @@ import { Document, Schema } from "mongoose";
 import { User } from "../../interfaces";
 
 export const UserSchema = new Schema<User & Document>({
-  name: {
+  email: {
+    type: String,
+    required: true,
+  },
+  password: {
     type: String,
     required: true,
   },
