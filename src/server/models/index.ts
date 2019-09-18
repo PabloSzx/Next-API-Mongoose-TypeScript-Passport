@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import mongoose, { model, Model } from "mongoose";
+import mongoose, { Document, model, Model } from "mongoose";
 
 import { User } from "../../interfaces";
 import { UserSchema } from "./User";
@@ -11,4 +11,4 @@ mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/test", {
 });
 mongoose.models = {};
 
-export const UserModel: Model<User> = model("User", UserSchema);
+export const UserModel: Model<User & Document> = model("User", UserSchema);
