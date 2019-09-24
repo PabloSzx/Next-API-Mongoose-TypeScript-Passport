@@ -6,9 +6,7 @@ import { AuthContext } from "../src/client/components/Auth/Context";
 import { User } from "../src/interfaces";
 
 const UsersList: FC = () => {
-  const [{ data, loading, error }] = useAxios<User[]>(
-    "http://localhost:3000/api/users"
-  );
+  const [{ data, loading, error }] = useAxios<User[]>("/api/users");
 
   if (loading) {
     return <p>Loading Users...</p>;

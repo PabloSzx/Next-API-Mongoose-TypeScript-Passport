@@ -41,6 +41,7 @@ passport.deserializeUser<User | null, string>(async (id, done) => {
       done(null, null);
     }
   } catch (err) {
+    done(err.message || err);
     console.error("deserializeUserError: ", err);
   }
 });
