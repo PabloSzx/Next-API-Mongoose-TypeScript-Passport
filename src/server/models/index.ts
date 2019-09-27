@@ -4,7 +4,9 @@ import mongoose, { Document, model, Model } from "mongoose";
 import { User } from "../../interfaces";
 import { UserSchema } from "./User";
 
-dotenv.config();
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config();
+}
 
 declare global {
   namespace NodeJS {
@@ -18,8 +20,6 @@ if (!global.dbConnected) {
   mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/test", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    bufferCommands: false,
-    bufferMaxEntries: 0,
   });
 }
 
